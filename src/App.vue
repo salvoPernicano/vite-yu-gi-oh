@@ -24,7 +24,8 @@ export default {
 <template>
     <div class="container">
         <div class="item" v-for="(element,index) in store.cardArray" :key="index">
-        <h3>{{ element.name }}</h3></div>
+        <h3>{{ element.name }}</h3>
+    <img :src="element.card_images[0].image_url" alt="lol"></div>
     </div>
 </template>
 
