@@ -10,7 +10,8 @@ export default {
     methods : {
         getCards() {
             axios.get(store.apiUrl).then(response =>{
-                console.log(response.data)
+                console.log(response.data.data);
+                store.cardArray = response.data.data
             })
         }
     },
@@ -21,7 +22,10 @@ export default {
 </script>
 
 <template>
-    <h1>ciao</h1>
+    <div class="container">
+        <div class="item" v-for="(element,index) in store.cardArray" :key="index">
+        <h3>{{ element.name }}</h3></div>
+    </div>
 </template>
 
 <style lang="scss">
