@@ -19,17 +19,23 @@ export default {
                 console.log(response.data.data);
                 store.cardArray = response.data.data
             })
+            store.loading = false;
         }
     },
-    mounted(){
-    this.getCards()
+    mounted() {
+        this.getCards()
     }
 }
 </script>
 
 <template>
     <AppHeader />
-    <AppMain />
+    <main class="text-center">
+        <div v-if="(store.loading)" class="spinner-border text-danger" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <AppMain />
+    </main>
 </template>
 
 <style lang="scss"></style>
