@@ -1,34 +1,35 @@
 <script>
-import {store} from './store'
+import { store } from './store'
 import axios from 'axios'
+import AppHeader from './components/Appheader.vue'
+import AppMain from './components/AppMain.vue'
 export default {
-    data(){
+    components: {
+        AppHeader,
+        AppMain
+    },
+    data() {
         return {
             store,
         }
     },
-    methods : {
+    methods: {
         getCards() {
-            axios.get(store.apiUrl).then(response =>{
+            axios.get(store.apiUrl).then(response => {
                 console.log(response.data.data);
                 store.cardArray = response.data.data
             })
         }
     },
     mounted(){
-        this.getCards()
+    this.getCards()
     }
 }
 </script>
 
 <template>
-    <div class="container">
-        <div class="item" v-for="(element,index) in store.cardArray" :key="index">
-        <h3>{{ element.name }}</h3>
-    <img :src="element.card_images[0].image_url" alt="lol"></div>
-    </div>
+    <AppHeader />
+    <AppMain />
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
