@@ -12,12 +12,15 @@ export default {
 }
 </script>
 <template>
-    <div class="card col-3 m-3 py-3 d-flex flex-column align-items-center">
+    <div class="card py-2 d-flex flex-column align-items-center">
         <figure>
             <img :src="propsObject.card_images[0].image_url" alt="">
         </figure>
+        <div class="cardInfo">
             <span class="d-block text-light fw-bold">{{ propsObject.name }}</span>
             <span class="d-block text-light fw-bold">{{ propsObject.race }}</span>
+
+        </div>
 
     </div>
 </template>
@@ -25,11 +28,16 @@ export default {
 
 <style lang="scss" scoped>
 .card{
+    margin-block: 10px;
+    min-width: 250px;
     flex-basis: calc(100% / 5);
     background-color: orange;
 }
+.cardInfo{
+    height: 60px;
+}
 figure{
-    width: 200px;
+    // width: 200px;
     height: 250px;
     img{
         height: 100%;
