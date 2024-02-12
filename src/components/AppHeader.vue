@@ -18,13 +18,12 @@ export default {
                 <img src="../assets/img/download.png" alt="">
                 <span class="text-dark fw-bold fs-2">Yu -Gi-Oh Api</span>
             </div>
-            <select class="form-select w-25" aria-label="Default select example">
-          <option v-for="(element) in store.archetypeArray">{{ element.archetype_name }}</option>
+            <select v-model="store.archetypeValue" class="form-select w-25" aria-label="Default select example">
+          <option v-for="(element) in store.archetypeArray" :value="element.archetype_name">{{ element.archetype_name }}</option>
 
         </select>
             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
+                <button class="btn btn-primary" @click.prevent="$emit('cardSearch')" type="button">Search</button>
             </form>
 
         </div>

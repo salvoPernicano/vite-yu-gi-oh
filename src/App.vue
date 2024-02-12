@@ -22,12 +22,21 @@ export default {
             })
         },
         getCards() {
+            store.loading = true
+            store.apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0&language=it'
+            if(store.archetypeValue !== ''){
+                store.apiUrl += `&archetype=${store.archetypeValue}`
+            }
+
             axios.get(store.apiUrl).then(response => {
                 console.log(response.data.data);
                 store.cardArray = response.data.data
             })
             store.loading = false;
-        }
+        },
+        // customResearch(){
+
+        // }
     },
     computed: {
         archetypeData(){
@@ -42,7 +51,7 @@ export default {
 </script>
 
 <template>
-    <AppHeader />
+    <AppHeader @cardSearch="getCards"/>
     <main class="text-center">
         <div v-if="(store.loading)" class="spinner-border text-danger" role="status">
             <span class="visually-hidden">Loading...</span>
