@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <template>
-    <div class="card py-2 d-flex flex-column align-items-center">
+    <div class="card m-2 py-2 d-flex flex-column align-items-center">
         <figure>
             <img :src="propsObject.card_images[0].image_url" alt="">
         </figure>
@@ -30,7 +30,7 @@ export default {
 .card{
     margin-block: 10px;
     min-width: 250px;
-    flex-basis: calc(100% / 5);
+    flex-basis: calc(100% / 6);
     background-color: orange;
 }
 .cardInfo{
