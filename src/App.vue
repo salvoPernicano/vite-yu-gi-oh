@@ -1,8 +1,9 @@
 <script>
 import { store } from './store'
 import axios from 'axios'
-import AppHeader from './components/Appheader.vue'
+import AppHeader from './components/AppHeader.vue'
 import AppMain from './components/AppMain.vue'
+
 export default {
     components: {
         AppHeader,
@@ -12,8 +13,14 @@ export default {
         return {
             store,
         }
-    },
+    }, 
     methods: {
+        getArchetype(){
+            axios.get(store.apiUrlArchetype).then(response =>{
+                console.log(response.data);
+                store.archetypeArray = response.data
+            })
+        },
         getCards() {
             axios.get(store.apiUrl).then(response => {
                 console.log(response.data.data);
@@ -22,8 +29,14 @@ export default {
             store.loading = false;
         }
     },
+    computed: {
+        archetypeData(){
+            return store.archetypeArray;
+        }
+    },
     mounted() {
-        this.getCards()
+       this.getArchetype();
+       this.getCards()
     }
 }
 </script>
