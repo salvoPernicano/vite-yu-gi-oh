@@ -2,9 +2,11 @@
 <script>
 import { store } from '../store'
 import AppCards from './AppCards.vue'
+import AppCounter from './AppCounter.vue'
 export default {
     components : {
-        AppCards
+        AppCards,
+        AppCounter
     },
     name: 'AppMain',
     data() {
@@ -15,6 +17,7 @@ export default {
 }
 </script>
 <template>
+    <AppCounter/>
     <div class="container-fluid d-flex justify-content-center align-items-center border border-danger">
         <div class="card-container d-flex justify-content-center align-items-center">
            <AppCards v-for="(element,index) in store.cardArray" 
